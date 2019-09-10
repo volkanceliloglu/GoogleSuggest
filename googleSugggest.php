@@ -14,9 +14,9 @@ function GoogleSuggest($q)
         $datavol = $value->suggestion->attributes()->{'data'};
         $result.=$datavol.',';
     }
-    return $result;
+    
+    return explode(',',rtrim($result,','));
 }
-echo '<pre>';
-$google_res = explode(',', rtrim(GoogleSuggest($_GET['q']),','));
-print_r($google_res);
+$query = $_GET['q'];
+print_r(GoogleSuggest($query));
 ?>
